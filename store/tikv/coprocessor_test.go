@@ -116,9 +116,8 @@ func (s *testCoprocessorSuite) TestRebuild(c *C) {
 			Desc: true,
 		},
 		tasks: tasks,
-		index: 1,
 	}
-	err = iter.rebuildCurrentTask()
+	err = iter.rebuildCurrentTask(iter.tasks[1])
 	c.Assert(err, IsNil)
 	c.Assert(iter.tasks, HasLen, 3)
 	s.taskEqual(c, iter.tasks[0], 1, "a", "m")
@@ -133,9 +132,8 @@ func (s *testCoprocessorSuite) TestRebuild(c *C) {
 			Desc: false,
 		},
 		tasks: tasks,
-		index: 1,
 	}
-	err = iter.rebuildCurrentTask()
+	err = iter.rebuildCurrentTask(iter.tasks[1])
 	c.Assert(err, IsNil)
 	c.Assert(iter.tasks, HasLen, 2)
 	s.taskEqual(c, iter.tasks[0], 2, "m", "q")
